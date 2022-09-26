@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Image;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -31,7 +32,9 @@ class HomeController extends Controller
     }
     public function pictures()
     {
-        return view('pictures');
+        $image = Image::all();
+        return view('pictures', compact('image'));
+
     }
     public function information()
     {
