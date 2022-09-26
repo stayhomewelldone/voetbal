@@ -39,6 +39,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('information') }}">{{ __('Information') }}</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.manage') }}">{{ __('Manage') }}</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -50,9 +53,9 @@
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
-                            @if (Route::has('login'))
+                            @if (Route::has('admin.dashboard'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Admin') }}</a>
+                                    <a class="nav-link" href="{{ route('admin.dashboard') }}">{{ __('Admin') }}</a>
                                 </li>
                              @endif
                             @if (Route::has('register'))
