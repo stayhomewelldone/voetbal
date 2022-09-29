@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Image;
+
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -28,6 +32,7 @@ class HomeController extends Controller
     }
     public function about()
     {
+
         return view('about');
     }
     public function pictures()
