@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+   @auth()
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -26,4 +27,8 @@
         </form>
 
     </div>
+   @endauth
+   @guest()
+   <h1>You are not authorized</h1>
+   @endguest
 @endsection

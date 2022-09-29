@@ -39,9 +39,14 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('information') }}">{{ __('Information') }}</a>
                         </li>
+                        @auth()
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.manage') }}">{{ __('Manage') }}</a>
                         </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('images.create') }}">{{ __('Upload') }}</a>
+                            </li>
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
