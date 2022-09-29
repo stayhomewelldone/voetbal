@@ -35,5 +35,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
 Route::get('/pictures', [App\Http\Controllers\HomeController::class, 'pictures'])->name('pictures');
 Route::get('/information', [App\Http\Controllers\HomeController::class, 'information'])->name('information');
+Route::get('/404', [App\Http\Controllers\HomeController::class, 'fourzerofour'])->name('404');
 
 Route::resource('images', 'App\Http\Controllers\ImageController')->middleware('auth'); // Laravel 8
