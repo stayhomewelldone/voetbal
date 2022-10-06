@@ -44,9 +44,8 @@ class HomeController extends Controller
     }
     public function information()
     {
-        $user = User::all();
-        $image = Image::where('user_id', '=', $user->id)->first();
-        return view('information', compact('user'));
+
+        return view('information');
     }
     public function fourzerofour()
     {
