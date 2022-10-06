@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use function GuzzleHttp\Promise\all;
 
 class HomeController extends Controller
 {
@@ -43,7 +44,9 @@ class HomeController extends Controller
     }
     public function information()
     {
-        return view('information');
+        $user = User::all();
+        $image = Image::where('user_id', '=', $user->id)->first();
+        return view('information', compact('user'));
     }
     public function fourzerofour()
     {
