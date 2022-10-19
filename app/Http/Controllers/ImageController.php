@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Image;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -131,5 +132,18 @@ class ImageController extends Controller
         $image->delete(); // Easy right?
 
         return redirect('/images')->with('success', 'Image removed.');
+
+    }
+
+    public function changeStatus(Request $request)
+    {
+
+        $image = Image::find($request->user_id);
+        $image->status = $request->status;
+        $image->save();
+
+        return response()->json(['success'=>'Status change successfully.']);
+
     }
 }
+
