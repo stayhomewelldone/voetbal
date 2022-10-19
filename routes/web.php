@@ -19,12 +19,8 @@ Route::get('/', function () {
 
 
 Route::middleware([ 'isAdmin'])->group(function () {
-    Route::get('/admin', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
-    Route::get('/manage', function () {
-        return view('admin.manage');
-    })->name('admin.manage');
+
+
     Route::get('images/create', function (){
         return view('images.create');})->name('images.create');});
 
@@ -35,6 +31,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
 Route::get('/pictures', [App\Http\Controllers\HomeController::class, 'pictures'])->name('pictures');
 Route::get('/information', [App\Http\Controllers\HomeController::class, 'information'])->name('information');
-Route::get('/404', [App\Http\Controllers\HomeController::class, 'fourzerofour'])->name('404');
 
-Route::resource('images', 'App\Http\Controllers\ImageController')->middleware('auth'); // Laravel 8
+Route::resource('images', 'App\Http\Controllers\ImageController')->middleware( 'isAdmin'); // Laravel 8
+
+Route::get('/search',[App\Http\Controllers\PostsController::class, 'search'] )->name('search');
+Route::get('/manage',[\App\Http\Controllers\ImageController::class, 'index'] )->name('admin.manage')->middleware( 'isAdmin');

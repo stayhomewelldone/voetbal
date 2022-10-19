@@ -10,11 +10,17 @@
     <title>{{ config('app.name', 'Voetbal') }}</title>
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+{{--    <link rel="dns-prefetch" href="//fonts.gstatic.com">--}}
+{{--    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">--}}
+    <link rel="stylesheet" href="public/storage/app.css">
+
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 </head>
 <body>
     <div id="app">
@@ -41,7 +47,7 @@
                         </li>
                         @auth()
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.manage') }}">{{ __('Manage') }}</a>
+                            <a class="nav-link" href="{{ route('images.index') }}">{{ __('Manage') }}</a>
                         </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('images.create') }}">{{ __('Upload') }}</a>
@@ -58,11 +64,11 @@
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
-                            @if (Route::has('admin.dashboard'))
+
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('admin.dashboard') }}">{{ __('Admin') }}</a>
+                                    <a class="nav-link" href="{{ route('images.index') }}">{{ __('Admin') }}</a>
                                 </li>
-                             @endif
+
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -97,4 +103,23 @@
         </main>
     </div>
 </body>
+<script>
+    $(function() {
+        $('.toggle-class').change(function() {
+            var status = $(this).prop('checked') == true ? 1 : 0;
+            var user_id = $(this).data('id');
+
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: '/changeStatus',
+                data: {'status': status, 'user_id': user_id},
+                success: function(data){
+                    console.log(data.success)
+                }
+            });
+        })
+    })
+
+</script>
 </html>

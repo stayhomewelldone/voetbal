@@ -14,24 +14,19 @@
                 </div>
                 <br />
             @endif
-            <form method="post" action="{{ route('images.update', $image->id) }}">
+            <form method="post" action="{{ route('images.update', $image->id) }}" enctype="multipart/form-data">
                 @method('PATCH')
                 @csrf
                 <div class="form-group">
 
-                    <label for="stock_name">Image Name:*</label>
-                    <input type="text" class="form-control" name="name" value="{{ $image->name }}" />
+                    <label for="stock_name">Image Name:</label>
+                    <input type="text" class="form-control" name="name" value="{{ $image->name }}" required />
+                </div>
+                <div class="form-group">
+                    <label for="stock_name">Image file:</label>
+                    <input type="file" class="form-control" name="file" >
                 </div>
 
-                <div class="form-group">
-                    <label for="ticket">Image Ticket:*</label>
-                    <input type="text" class="form-control" name="ticket" value="{{ $image->ticket }}" />
-                </div>
-
-                <div class="form-group">
-                    <label for="value">Image Value:</label>
-                    <input type="text" class="form-control" name="value" value="{{ $image->value }}" />
-                </div>
                 <button type="submit" class="btn btn-primary">Update</button>
             </form>
         </div>

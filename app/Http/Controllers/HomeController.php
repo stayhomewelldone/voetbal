@@ -47,9 +47,6 @@ class HomeController extends Controller
 
         return view('information');
     }
-    public function fourzerofour()
-    {
-        return view('404');
-    }
+
 }
 

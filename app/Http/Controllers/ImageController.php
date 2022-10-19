@@ -15,9 +15,9 @@ class ImageController extends Controller
      */
     public function index()
     {
-        $images = Image::all();
+        $image = Image::all();
 
-        return view('images.index', compact('images'));
+        return view('images.index', compact('image'));
     }
 
     /**
@@ -55,7 +55,8 @@ class ImageController extends Controller
             // Store the record, using the new file hashname which will be it's new filename identity.
             $image = new Image([
                 "name" => $request->get('name'),
-                "file_path" => $request->file->hashName()
+                "file_path" => $request->file->hashName(),
+//                "user_id" => Auth::user()->id
             ]);
             $image->user()->associate(Auth::user());
 
@@ -99,26 +100,23 @@ class ImageController extends Controller
         $request->validate([
             'name' => 'required',
         ]);
+        $image = Image::find($id);
 
         if ($request->hasFile('file')) {
 
-            $image = Image::find($id);
             $request->validate([
                 'image' => 'mimes:jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
             ]);
 
-            // Save the file locally in the storage/public/ folder under a new folder named /image
+            $image->name = $request->name;
+            $image->file_path = $request->file->hashName();
             $request->file->store('image', 'public');
-
-            // Store the record, using the new file hashname which will be it's new filename identity.
-            $image->name=$request->get('name');
-            $image->file_path=$request->file->hashName();
-
-            $image->save(); // Finally, save the record.
         }
-        return view('images.index')->with('success', 'Image updated.');
 
+        $image->save();
+        return redirect('/images')->with('success', 'Image updated');
 
+//        dd($request);
     }
 
     /**

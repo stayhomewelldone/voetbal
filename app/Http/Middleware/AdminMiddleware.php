@@ -25,7 +25,7 @@ class AdminMiddleware
             return $next($request);
         }
         if (!Auth::user()->user_type == "admin"){
-            return redirect()->route('404');
+            return abort(403, 'Unauthorized action.');
 
         }
 

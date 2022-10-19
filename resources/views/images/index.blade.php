@@ -23,18 +23,21 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($images as $image)
+                @foreach($image as $images)
                     <tr>
-                        <td>{{$image->id}}</td>
-                        <td>{{$image->name}} </td>
-                        <td>{{$image->file_path}}</td>
-                        <td>{{$image->is_favorite}}</td>
-                        <td>{{$image->updated_at}}</td>
+                        <td>{{$images->id}}</td>
+                        <td>{{$images->name}} </td>
+                        <td>{{$images->file_path}}</td>
+                        <td>{{$images->is_favorite}}</td>
+                        <td>{{$images->updated_at}}</td>
+                        <td><td>
+                            <input data-id="{{$images->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{ $images->status ? 'checked' : '' }}>
+                        </td></td>
                         <td>
-                            <a href="{{ route('images.edit',$image->id)}}" class="btn btn-primary">Edit</a>
+                            <a href="{{ route('images.edit',$images->id)}}" class="btn btn-primary">Edit</a>
                         </td>
                         <td>
-                            <form action="{{ route('images.destroy', $image->id)}}" method="post">
+                            <form action="{{ route('images.destroy', $images->id)}}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger" type="submit">Delete</button>
@@ -49,6 +52,7 @@
 
 
 @endsection
+
 
 
 

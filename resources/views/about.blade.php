@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<p><strong>Hallo mensen.</strong></p>
+
+<h2><strong>Hallo, hier is wat informatie</strong></h2>
 
 @endsection
