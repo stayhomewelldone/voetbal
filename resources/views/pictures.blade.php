@@ -8,7 +8,7 @@
 
             <p><strong>{{$item->name}}</strong></p>
 
-            <img src="{{ asset('storage/image/'.$item->file_path) }}" alt="{{$item->name}}" width="350" height="350">
+            <img src="{{ asset('storage/image/'.$item->file_path) }}" alt="{{$item->name}}" width="500" height="350">
         @endif
     @endforeach
 @endsection

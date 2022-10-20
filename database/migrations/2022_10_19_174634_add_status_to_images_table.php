@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('images', function (Blueprint $table) {
-            $table->boolean('status')->default(0);
+            $table->boolean('status')->default(1);
         });
     }
 
@@ -26,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('images', function (Blueprint $table) {
-            $table->dropConstrainedForeignId('status');
+            $table->dropColumn('status');
         });
     }
 };
