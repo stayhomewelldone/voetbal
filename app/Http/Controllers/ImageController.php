@@ -16,7 +16,7 @@ class ImageController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('isAdmin')->except('create','store', 'index', 'edit', 'delete', 'update', 'changeStatus');
+        $this->middleware('isAdmin')->except('create','store', 'index');
         $this->middleware("auth");
     }
 
