@@ -106,14 +106,15 @@
 <script>
     $(function() {
         $('.toggle-class').change(function() {
-            var status = $(this).prop('checked') == true ? 1 : 0;
-            var image_id = $(this).data('id');
+            let status = $(this).prop('checked') == true ? 1 : 0;
+            let image_id = $(this).data('id');
+            let token = document.querySelector('meta[name="csrf-token"]').content;
 
             $.ajax({
-                type: "GET",
+                type: "POST",
                 dataType: "json",
                 url: '/changeStatus',
-                data: {'status': status, 'user_id': image_id},
+                data: {"_token":token,'status': status, 'user_id': image_id},
                 success: function(data){
                     console.log(data.success)
                 }

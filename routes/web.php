@@ -36,4 +36,4 @@ Route::resource('images', 'App\Http\Controllers\ImageController'); // Laravel 8
 
 //Route::get('/search',[App\Http\Controllers\PostsController::class, 'search'] )->name('search');
 Route::get('/manage',[\App\Http\Controllers\ImageController::class, 'index'] )->name('admin.manage')->middleware( 'isAdmin');
-Route::get('changeStatus', [\App\Http\Controllers\ImageController::class, 'changeStatus']);
+Route::post('changeStatus', [\App\Http\Controllers\ImageController::class, 'changeStatus']);
