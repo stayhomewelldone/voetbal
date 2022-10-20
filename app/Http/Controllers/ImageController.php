@@ -16,7 +16,7 @@ class ImageController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('isAdmin')->except('create','store');
+        $this->middleware('isAdmin')->except('create','store', 'index', 'edit', 'delete', 'update', 'changeStatus');
         $this->middleware("auth");
     }
 
@@ -26,7 +26,13 @@ class ImageController extends Controller
     {
         $image = Image::all();
 
+        if (!(auth()->user()->user_type == 'admin')){
+            $userId = Auth::user()->id;
+            $image = Image::where('user_id',$userId)->get();
+            return view('images.index', compact('image'));
+        }
         return view('images.index', compact('image'));
+
     }
 
     /**
@@ -153,5 +159,13 @@ class ImageController extends Controller
         return response()->json(['success'=>'Status change successfully.']);
 
     }
+//    public function test()
+//    {
+////        $image = Image::all();
+//        $userId = Auth::user()->id;
+//        $image = Image::where('user_id',$userId)->get();
+//
+//        return view('images.index', compact('image'));
+//    }
 }
 

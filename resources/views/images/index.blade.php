@@ -14,6 +14,7 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
+                    <td>User ID</td>
                     <td>ID</td>
                     <td>Image Name</td>
                     <td>File path</td>
@@ -25,6 +26,7 @@
                 <tbody>
                 @foreach($image as $images)
                     <tr>
+                        <td>{{$images->user_id}}</td>
                         <td>{{$images->id}}</td>
                         <td>{{$images->name}} </td>
                         <td>{{$images->file_path}}</td>
