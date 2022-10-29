@@ -19,12 +19,14 @@
                 @csrf
                 <div class="form-group">
 
-                    <label for="stock_name">Image Name:</label>
+                    <label for="stock_name">Soccer player Name:</label>
                     <input type="text" class="form-control" name="name" value="{{ $image->name }}" required />
+                    <label for="stock_name">Position:</label>
+                    <input type="text" class="form-control" name="position" value="{{ $image->position }}" required />
                 </div>
                 <div class="form-group">
                     <label for="stock_name">Image file:</label>
-                    <input type="file" class="form-control" name="file" >
+                    <input type="file" class="form-control" name="file" v/>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Update</button>

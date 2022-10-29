@@ -26,7 +26,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/welcome') }}">
                     {{ config('app.name', 'Voetbal') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -40,7 +40,7 @@
                             <a class="nav-link" href="{{ route('about') }}">{{ __('About') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('pictures') }}">{{ __('Pictures') }}</a>
+                            <a class="nav-link" href="{{ route('index') }}">{{ __('Pictures') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('information') }}">{{ __('Information') }}</a>
@@ -52,6 +52,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('images.create') }}">{{ __('Upload') }}</a>
                             </li>
+
                         @endauth
                     </ul>
 

@@ -16,7 +16,8 @@
                 <tr>
                     <td>User ID</td>
                     <td>ID</td>
-                    <td>Image Name</td>
+                    <td>Soccer player</td>
+                    <td>Position</td>
                     <td>File path</td>
                     <td>Is favorite</td>
                     <td>Updated at</td>
@@ -29,6 +30,7 @@
                         <td>{{$images->user_id}}</td>
                         <td>{{$images->id}}</td>
                         <td>{{$images->name}} </td>
+                        <td>{{$images->position}} </td>
                         <td>{{$images->file_path}}</td>
                         <td>{{$images->is_favorite}}</td>
                         <td>{{$images->updated_at}}</td>

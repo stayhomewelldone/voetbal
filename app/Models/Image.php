@@ -8,9 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
     use HasFactory;
+    protected $with = ['user'];
 
     protected $fillable = [
         'name',
+        'position',
         'file_path',
         'is_favorite',
         'created_at',

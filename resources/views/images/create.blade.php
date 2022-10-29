@@ -17,8 +17,11 @@
             <!-- Add CSRF Token -->
             @csrf
             <div class="form-group">
-                <label>Image Name</label>
+                <label>Soccer player name</label>
                 <input type="text" class="form-control" name="name" required>
+                <label>Position</label>
+                <input type="text" class="form-control" name="position" required>
+
             </div>
             <div class="form-group">
                 <input type="file" name="file" required>

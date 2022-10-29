@@ -8,7 +8,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use function GuzzleHttp\Promise\all;
+
 
 class HomeController extends Controller
 {
@@ -29,7 +31,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $image = Image::latest();
+        if (request('search')){
+            $image->where('name', 'like', '%' . request('search') . '%')
+            ->orWhere('position', 'like', '%' . request('search'));
+        }
+
+        return view('index', [ 'image'=>$image->get()]);
     }
     public function about()
     {
@@ -38,15 +46,15 @@ class HomeController extends Controller
     }
     public function pictures()
     {
-        $image = Image::all();
-        return view('pictures', compact('image'));
 
+        return view('home');
     }
     public function information()
     {
 
         return view('information');
     }
+
 
 }
 

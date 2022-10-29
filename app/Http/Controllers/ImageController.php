@@ -49,6 +49,7 @@ class ImageController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'position' => 'required'
         ]);
 
         // ensure the request has a file before we attempt anything else.
@@ -65,6 +66,7 @@ class ImageController extends Controller
             $image = new Image([
                 "name" => $request->get('name'),
                 "file_path" => $request->file->hashName(),
+                "position" => $request->get('position')
 //                "user_id" => Auth::user()->id
             ]);
             $image->user()->associate(Auth::user());
@@ -119,6 +121,7 @@ class ImageController extends Controller
 
             $image->name = $request->name;
             $image->file_path = $request->file->hashName();
+            $image->position = $request->position;
             $request->file->store('image', 'public');
         }
 
