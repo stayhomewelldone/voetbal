@@ -19,6 +19,7 @@ class ImageController extends Controller
     {
         $this->middleware('isAdmin')->except('create','store');
         $this->middleware("auth");
+        $this->middleware("LoginCount")->only('store');
     }
 
 
