@@ -31,7 +31,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-//        dd(request('search'));
+//        dd(request());
         $image = Image::latest();
         $users = DB::table('users')->select('id', 'name')->get();
 //        DB::table('users');->pluck('name')

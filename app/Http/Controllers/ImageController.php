@@ -6,6 +6,7 @@ use App\Models\Image;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ImageController extends Controller
 {
@@ -108,6 +109,13 @@ class ImageController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validator = Validator::make($request->all(), [
+            'ip_address' => ''
+        ]);
+        if ($validator->fails()) {
+            return redirect('/')
+                ;
+        }
         $request->validate([
             'name' => 'required',
         ]);
@@ -139,6 +147,7 @@ class ImageController extends Controller
      */
     public function destroy($id)
     {
+
         $image = Image::find($id);
         $image->delete(); // Easy right?
 
