@@ -29,6 +29,8 @@
 
 
             <img src="{{ asset('storage/image/'.$item->file_path) }}" alt="{{$item->name}}" width="500" height="350">
+            <hr style="border: 3px solid #4B0008; width: 33%;;">
+
         @endif
     @endforeach
 @endsection

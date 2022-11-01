@@ -37,7 +37,7 @@ class HomeController extends Controller
 //        DB::table('users');->pluck('name')
         if (request('search')){
             $image->where('name', 'like', '%' . request('search') . '%')
-            ->orWhere('position', 'like', '%' . request('search'));
+            ->orWhere('position', 'like', '%' . request('search') . '%');
         }
         if (request('usernames')){
             $image->where('user_id', 'like', '%' . request('usernames') . '%');

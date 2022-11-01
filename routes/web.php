@@ -25,11 +25,11 @@ Route::get('/welcome', function () {
 //        return view('images.create');})->name('images.create');});
 
 
-Auth::routes();
+\Illuminate\Support\Facades\Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'pictures'])->name('home');
 Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
-Route::get('/index', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 Route::get('/information', [App\Http\Controllers\HomeController::class, 'information'])->name('information');
 
 Route::resource('images', 'App\Http\Controllers\ImageController'); // Laravel 8
@@ -37,5 +37,5 @@ Route::resource('images', 'App\Http\Controllers\ImageController'); // Laravel 8
 //Route::get('/search',[App\Http\Controllers\PostsController::class, 'search'] )->name('search');
 Route::get('/manage',[\App\Http\Controllers\ImageController::class, 'index'] )->name('admin.manage')->middleware( 'isAdmin');
 Route::post('changeStatus', [\App\Http\Controllers\ImageController::class, 'changeStatus']);
-Route::get('/', [App\Http\Controllers\PostController::class, 'index']);
+//Route::get('/', [App\Http\Controllers\PostController::class, 'index']);
 Route::get('/pictures', [App\Http\Controllers\PostController::class, 'show']);
