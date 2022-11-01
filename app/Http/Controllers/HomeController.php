@@ -31,14 +31,25 @@ class HomeController extends Controller
      */
     public function index()
     {
+//        dd(request('search'));
         $image = Image::latest();
+        $users = DB::table('users')->select('id', 'name')->get();
+//        DB::table('users');->pluck('name')
         if (request('search')){
             $image->where('name', 'like', '%' . request('search') . '%')
             ->orWhere('position', 'like', '%' . request('search'));
         }
+        if (request('usernames')){
+            $image->where('user_id', 'like', '%' . request('usernames') . '%');
 
-        return view('index', [ 'image'=>$image->get()]);
+        }
+
+
+
+        return view('index',compact('users'),  [ 'image'=>$image->get()]);
     }
+
+
     public function about()
     {
 
